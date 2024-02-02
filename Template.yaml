@@ -16,11 +16,10 @@ Resources:
       Timeout: 5
       MemorySize: 128
       FunctionName: site_health_score
-      Events:
-        MyApi:
-          Type: Api
-          Properties:
-            Path:  / (our path here )
-            Method: get
+      Environment:
+        Variables:
+          ConfigBucket: !Sub ${Environment}-Test-lambda
+      Policies:
+      ( need to mention the role policies)
 
 
