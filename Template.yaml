@@ -1,0 +1,35 @@
+mkdir Lambda-Template
+
+ls
+
+vi file name...
+
+ex: template.yml
+
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description:  Site Health Score
+
+Parameters:
+  Environment:
+    Type: String
+    Default: dev
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: app.lambda_template ( just for example )
+      Runtime: python3.12
+      CodeUri: hello_world/
+      Timeout: 5
+      MemorySize: 128
+      FunctionName: site_health_score
+      Events:
+        MyApi:
+          Type: Api
+          Properties:
+            Path:  / (our path here )
+            Method: get
+
+
