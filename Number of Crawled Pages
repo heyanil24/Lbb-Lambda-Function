@@ -1,0 +1,28 @@
+from python_Client.client import RestClient
+
+# import requests
+
+
+def lambda_handler(event, context):
+    
+  from random import Random
+  from client import RestClient
+# You can download this file from here https://api.dataforseo.com/v3/_examples/python/_python_Client.zip
+client = RestClient("login", "password")
+post_data = dict()
+# simple way to get a result
+post_data[len(post_data)] = dict(
+   id="02241700-1535-0216-0000-034137259bc1",
+   url="https://www.etsy.com/about/jobs.workco2018.js?"
+)
+# POST /v3/on_page/pages_by_resource
+# the full list of possible parameters is available in documentation
+response = client.post("/v3/on_page/pages_by_resource", post_data)
+# you can find the full list of the response codes here https://docs.dataforseo.com/v3/appendix/errors
+   if response["status_code"] == 20000:
+      return(response)
+     # do something with result
+   else:
+      return("error. Code: %d Message: %s" % (response["status_code"], response["status_message"]))
+
+    
